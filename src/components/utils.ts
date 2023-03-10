@@ -6,7 +6,7 @@ import {
 import {ALL_HANDLES} from "./DragResize";
 import {ref, Ref} from "vue";
 
-export const IDENTITY = Symbol("Vue3DraggableResizable");
+export const IDENTITY = Symbol("DragResize");
 
 export function getElSize(el: Element) {
   const style = window.getComputedStyle(el);
