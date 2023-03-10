@@ -3,10 +3,10 @@
 # DragResize
 
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
-[![vue version](https://img.shields.io/badge/vue_version->=3-brightgreen.svg?style=flat-square)](https://github.com/a7650/vue3-draggable-resizable)
+[![vue version](https://img.shields.io/badge/vue_version->=3-brightgreen.svg?style=flat-square)](https://github.com/a7650/@fuyoo/dragresize)
 
 
-**这是[a7650/vue3-draggable-resizable](https://github.com/a7650/vue3-draggable-resizable)的fork**
+**这是[a7650/@fuyoo/dragresize](https://github.com/a7650/@fuyoo/dragresize)的fork**
 
 > [Vue3 组件] 用于拖拽调整位置和大小的的组件，同时支持冲突检测，元素吸附对齐，实时参考线。
 
@@ -33,7 +33,7 @@
 ### 使用
 
 ```bash
-$ npm install vue3-draggable-resizable
+$ npm install @fuyoo/dragresize
 ```
 
 使用 use 方法注册组件
@@ -42,9 +42,9 @@ $ npm install vue3-draggable-resizable
 // >main.js
 import { createApp } from 'vue'
 import App from './App.vue'
-import DragResize from 'vue3-draggable-resizable'
+import DragResize from '@fuyoo/dragresize'
 //需引入默认样式
-import 'vue3-draggable-resizable/dist/DragResize.css'
+import '@fuyoo/dragresize/dist/DragResize.css'
 
 // 你将会获得一个名为DragResize的全局组件
 createApp(App)
@@ -57,9 +57,9 @@ createApp(App)
 ```js
 // >component.js
 import { defineComponent } from 'vue'
-import DragResize from 'vue3-draggable-resizable'
+import DragResize from '@fuyoo/dragresize'
 //需引入默认样式
-import 'vue3-draggable-resizable/dist/DragResize.css'
+import '@fuyoo/dragresize/dist/DragResize.css'
 
 export default defineComponent({
   components: { DragResize }
@@ -100,9 +100,9 @@ export default defineComponent({
 
 <script>
 import { defineComponent } from 'vue'
-import DragResize from 'vue3-draggable-resizable'
+import DragResize from '@fuyoo/dragresize'
 //default styles
-import 'vue3-draggable-resizable/dist/DragResize.css'
+import '@fuyoo/dragresize/dist/DragResize.css'
 export default defineComponent({
   components: { DragResize },
   data() {
@@ -525,35 +525,35 @@ payload: `{ x: number, y: number, w: number, h: number }`
 
 你需要引入另外一个组件来使用该特性
 
-像下面这样，将 DragResize 放在 DraggableContainer 内：
+像下面这样，将 DragResize 放在 DragResizeContainer 内：
 
 ```vue
 <template>
   <div id="app">
     <div class="parent">
-      <DraggableContainer>
+      <DragResizeContainer>
         <DragResize>
           Test
         </DragResize>
         <DragResize>
           Another test
         </DragResize>
-      </DraggableContainer>
+      </DragResizeContainer>
     </div>
   </div>
 </template>
 
 <script>
 import { defineComponent } from 'vue'
-import DragResize from 'vue3-draggable-resizable'
+import DragResize from '@fuyoo/dragresize'
 // 这个组件不是默认导出的，
 // 如果你之前是通过“app.use(DragResize)”注册的，
-// 那么你这里就不需要再引入了，因为DraggableContainer这个已经被全局注册了，你可以直接使用
-import { DraggableContainer } from 'vue3-draggable-resizable'
+// 那么你这里就不需要再引入了，因为DragResizeContainer这个已经被全局注册了，你可以直接使用
+import { DragResizeContainer } from '@fuyoo/dragresize'
 //default styles
-import 'vue3-draggable-resizable/dist/DragResize.css'
+import '@fuyoo/dragresize/dist/DragResize.css'
 export default defineComponent({
-  components: { DragResize, DraggableContainer }
+  components: { DragResize, DragResizeContainer }
 })
 </script>
 <style>
@@ -569,9 +569,9 @@ export default defineComponent({
 </style>
 ```
 
-### DraggableContainer Props
+### DragResizeContainer Props
 
-这些 props 适用于 DraggableContainer 组件
+这些 props 适用于 DragResizeContainer 组件
 
 #### disabled
 
@@ -581,14 +581,14 @@ default: `false`<br>
 关闭吸附对齐功能
 
 ```html
-<DraggableContainer :disabled="true">
+<DragResizeContainer :disabled="true">
   <DragResize>
     Test
   </DragResize>
   <DragResize>
     Another test
   </DragResize>
-</DraggableContainer>
+</DragResizeContainer>
 ```
 
 #### adsorbParent
@@ -599,14 +599,14 @@ default: `true`<br>
 是否和父组件对齐，如果开启，则元素拖拽到父容器边缘（父容器的上中下左中右边）时会发生吸附，否则不会
 
 ```html
-<DraggableContainer :adsorbParent="false">
+<DragResizeContainer :adsorbParent="false">
   <DragResize>
     Test
   </DragResize>
   <DragResize>
     Another test
   </DragResize>
-</DraggableContainer>
+</DragResizeContainer>
 ```
 
 #### adsorbCols
@@ -617,14 +617,14 @@ default: `null`<br>
 自定义列的校准线，元素在x轴上拖动到这些线附近时，会产生吸附
 
 ```html
-<DraggableContainer :adsorbCols="[10,20,30]">
+<DragResizeContainer :adsorbCols="[10,20,30]">
   <DragResize>
     Test
   </DragResize>
   <DragResize>
     Another test
   </DragResize>
-</DraggableContainer>
+</DragResizeContainer>
 ```
 
 #### adsorbRows
@@ -635,14 +635,14 @@ default: `null`<br>
 自定义行的校准线，元素在y轴上拖动到这些线附近时，会产生吸附
 
 ```html
-<DraggableContainer :adsorbRows="[10,20,30]">
+<DragResizeContainer :adsorbRows="[10,20,30]">
   <DragResize>
     Test
   </DragResize>
   <DragResize>
     Another test
   </DragResize>
-</DraggableContainer>
+</DragResizeContainer>
 ```
 
 #### referenceLineVisible
@@ -653,14 +653,14 @@ default: `true`<br>
 是否显示实时参考线，元素在产生自动吸附后，会有一条参考线线出现，如果不需要，可通过该选项关闭。
 
 ```html
-<DraggableContainer :referenceLineVisible="false">
+<DragResizeContainer :referenceLineVisible="false">
   <DragResize>
     Test
   </DragResize>
   <DragResize>
     Another test
   </DragResize>
-</DraggableContainer>
+</DragResizeContainer>
 ```
 
 #### referenceLineColor
@@ -671,12 +671,12 @@ default: `#f00`<br>
 实时参考线的颜色，默认红色
 
 ```html
-<DraggableContainer :referenceLineColor="#0f0">
+<DragResizeContainer :referenceLineColor="#0f0">
   <DragResize>
     Test
   </DragResize>
   <DragResize>
     Another test
   </DragResize>
-</DraggableContainer>
+</DragResizeContainer>
 ```
