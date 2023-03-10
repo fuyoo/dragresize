@@ -2,11 +2,13 @@
 
 # DragResize
 
+[![npm version](https://badge.fury.io/js/@fuyoo%2Fdragresize.svg)](https://badge.fury.io/js/@fuyoo%2Fdragresize)
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
+[![npm](https://img.shields.io/npm/dt/@fuyoo/dragresize.svg?style=flat-square)](https://www.npmjs.com/package/@fuyoo/dragresize)
 [![vue version](https://img.shields.io/badge/vue_version->=3-brightgreen.svg?style=flat-square)](https://github.com/a7650/@fuyoo/dragresize)
 
 
-**这是[a7650/@fuyoo/dragresize](https://github.com/a7650/@fuyoo/dragresize)的fork**
+**这是[a7650/vue3-draggable-resizable](https://github.com/a7650/vue3-draggable-resizable)的fork**
 
 > [Vue3 组件] 用于拖拽调整位置和大小的的组件，同时支持冲突检测，元素吸附对齐，实时参考线。
 

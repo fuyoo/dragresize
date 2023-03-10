@@ -2,12 +2,12 @@
 
 # dragresize
 
-[![npm version](https://badge.fury.io/js/@fuyoo%2Freal_ip.svg)](https://badge.fury.io/js/@fuyoo%2Freal_ip)
+[![npm version](https://badge.fury.io/js/@fuyoo%2Fdragresize.svg)](https://badge.fury.io/js/@fuyoo%2Fdragresize)
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
 [![npm](https://img.shields.io/npm/dt/@fuyoo/dragresize.svg?style=flat-square)](https://www.npmjs.com/package/@fuyoo/dragresize)
 [![vue version](https://img.shields.io/badge/vue_version->=3-brightgreen.svg?style=flat-square)](https://github.com/a7650/@fuyoo/dragresize)
 
-**this is a fork. from [a7650/@fuyoo/dragresize](https://github.com/a7650/@fuyoo/dragresize)**
+**this is a fork. from [a7650/vue3-draggable-resizable](https://github.com/a7650/vue3-draggable-resizable)**
 
 > [Vue3 组件] 用于拖拽调整位置和大小的的组件，同时支持冲突检测，元素吸附对齐，实时参考线。
 > [ Vue3 Component ] Draggable and resizable component for vue3, and, support element adsorption alignment, real-time reference line, etc.
