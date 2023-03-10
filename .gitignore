@@ -22,4 +22,10 @@ pnpm-debug.log*
 *.sln
 *.sw?
 .npmrc
-typing
+typings
+src/components/DragResize.js
+src/components/DragResizeContainer.js
+src/components/hooks.js
+src/components/types.js
+src/components/utils.js
+src/index.js
