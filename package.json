@@ -51,6 +51,11 @@
     "拖拽",
     "吸附对齐"
   ],
+  "files": [
+    "src",
+    "dist",
+    "typings"
+  ],
   "main": "src/index.js",
   "module": "src/index.js",
   "unpkg": "src/index.js",
