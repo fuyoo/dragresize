@@ -96,7 +96,6 @@ export function getReferenceLineMap(
 export function getParentSize(el: Ref<HTMLElement | undefined>) {
   const parentWidth = ref(0);
   const parentHeight = ref(0);
-  console.log(el.value);
   try {
       const dom = window.getComputedStyle(el.value?.parentElement!);
       parentWidth.value = parseFloat(dom.getPropertyValue("width"));
