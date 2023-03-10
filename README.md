@@ -4,10 +4,10 @@
 
 [![npm version](https://badge.fury.io/js/@fuyoo%2Freal_ip.svg)](https://badge.fury.io/js/@fuyoo%2Freal_ip)
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
-[![npm](https://img.shields.io/npm/dt/vue3-draggable-resizable.svg?style=flat-square)](https://www.npmjs.com/package/vue3-draggable-resizable)
-[![vue version](https://img.shields.io/badge/vue_version->=3-brightgreen.svg?style=flat-square)](https://github.com/a7650/vue3-draggable-resizable)
+[![npm](https://img.shields.io/npm/dt/@fuyoo/dragresize.svg?style=flat-square)](https://www.npmjs.com/package/@fuyoo/dragresize)
+[![vue version](https://img.shields.io/badge/vue_version->=3-brightgreen.svg?style=flat-square)](https://github.com/a7650/@fuyoo/dragresize)
 
-**this is a fork. from [a7650/vue3-draggable-resizable](https://github.com/a7650/vue3-draggable-resizable)**
+**this is a fork. from [a7650/@fuyoo/dragresize](https://github.com/a7650/@fuyoo/dragresize)**
 
 > [Vue3 组件] 用于拖拽调整位置和大小的的组件，同时支持冲突检测，元素吸附对齐，实时参考线。
 > [ Vue3 Component ] Draggable and resizable component for vue3, and, support element adsorption alignment, real-time reference line, etc.
@@ -35,22 +35,22 @@
 ### Usage
 
 ```bash
-$ npm install vue3-draggable-resizable
+$ npm install @fuyoo/dragresize
 ```
 
-Register the Vue3DraggableResizable
+Register the DragResize
 
 ```js
 // >main.js
 import { createApp } from 'vue'
 import App from './App.vue'
-import Vue3DraggableResizable from 'vue3-draggable-resizable'
+import DragResize from '@fuyoo/dragresize'
 //default styles
-import 'vue3-draggable-resizable/dist/Vue3DraggableResizable.css'
+import '@fuyoo/dragresize/dist/DragResize.css'
 
-// You will have a global component named "Vue3DraggableResizable"
+// You will have a global component named "DragResize"
 createApp(App)
-  .use(Vue3DraggableResizable)
+  .use(DragResize)
   .mount('#app')
 ```
 
@@ -59,12 +59,12 @@ You can also use it separately within the component
 ```js
 // >component.js
 import { defineComponent } from 'vue'
-import Vue3DraggableResizable from 'vue3-draggable-resizable'
+import DragResize from '@fuyoo/dragresize'
 //default styles
-import 'vue3-draggable-resizable/dist/Vue3DraggableResizable.css'
+import '@fuyoo/dragresize/dist/DragResize.css'
 
 export default defineComponent({
-  components: { Vue3DraggableResizable }
+  components: { DragResize }
   // ...other
 })
 ```
@@ -75,7 +75,7 @@ Here is a complete example of using "vue-template"
 <template>
   <div id="app">
     <div class="parent">
-      <Vue3DraggableResizable
+      <DragResize
         :initW="110"
         :initH="120"
         v-model:x="x"
@@ -95,18 +95,18 @@ Here is a complete example of using "vue-template"
         @resize-end="print('resize-end')"
       >
         This is a test example
-      </Vue3DraggableResizable>
+      </DragResize>
     </div>
   </div>
 </template>
 
 <script>
 import { defineComponent } from 'vue'
-import Vue3DraggableResizable from 'vue3-draggable-resizable'
+import DragResize from '@fuyoo/dragresize'
 //default styles
-import 'vue3-draggable-resizable/dist/Vue3DraggableResizable.css'
+import '@fuyoo/dragresize/dist/DragResize.css'
 export default defineComponent({
-  components: { Vue3DraggableResizable },
+  components: { DragResize },
   data() {
     return {
       x: 100,
@@ -146,7 +146,7 @@ default: `1`<br>
 Set initial scale
 
 ```html
-<Vue3DraggableResizable :scale="1" />
+<DragResize :scale="1" />
 ```
 
 #### initW
@@ -157,7 +157,7 @@ default: `null`<br>
 Set initial width(px)
 
 ```html
-<Vue3DraggableResizable :initW="100" />
+<DragResize :initW="100" />
 ```
 
 #### initH
@@ -168,7 +168,7 @@ default: `null`<br>
 Set initial height(px)
 
 ```html
-<Vue3DraggableResizable :initH="100" />
+<DragResize :initH="100" />
 ```
 
 #### w
@@ -180,7 +180,7 @@ Current width(px) of the container.<br>
 You can use "v-model:w" to keeps it up-to-date
 
 ```html
-<Vue3DraggableResizable v-model:w="100" />
+<DragResize v-model:w="100" />
 ```
 
 #### h
@@ -192,7 +192,7 @@ Current height(px) of the container.<br>
 You can use "v-model:h" to keeps it up-to-date
 
 ```html
-<Vue3DraggableResizable v-model:h="100" />
+<DragResize v-model:h="100" />
 ```
 
 #### x
@@ -204,7 +204,7 @@ Current left(px) of the container.<br>
 You can use "v-model:x" to keeps it up-to-date
 
 ```html
-<Vue3DraggableResizable v-model:x="100" />
+<DragResize v-model:x="100" />
 ```
 
 #### y
@@ -216,7 +216,7 @@ The current top(px) of the container.<br>
 You can use "v-model:y" to keeps it up-to-date
 
 ```html
-<Vue3DraggableResizable v-model:y="100" />
+<DragResize v-model:y="100" />
 ```
 
 #### minW
@@ -227,7 +227,7 @@ default: `20`<br>
 Minimum width(px)
 
 ```html
-<Vue3DraggableResizable :minW="100" />
+<DragResize :minW="100" />
 ```
 
 #### minH
@@ -238,7 +238,7 @@ default: `20`<br>
 Minimum height(px)
 
 ```html
-<Vue3DraggableResizable :minH="100" />
+<DragResize :minH="100" />
 ```
 
 #### active
@@ -250,7 +250,7 @@ Indicates whether the component is selected.<br>
 You can use "v-model:active" to keeps it up-to-date
 
 ```html
-<Vue3DraggableResizable v-model:active="100" />
+<DragResize v-model:active="100" />
 ```
 
 #### draggable
@@ -261,7 +261,7 @@ default: `true`<br>
 Defines the component can be draggable or not
 
 ```html
-<Vue3DraggableResizable :draggable="true" />
+<DragResize :draggable="true" />
 ```
 
 #### resizable
@@ -272,7 +272,7 @@ default: `true`<br>
 Defines the component can be resizable or not
 
 ```html
-<Vue3DraggableResizable :draggable="true" />
+<DragResize :draggable="true" />
 ```
 
 #### lockAspectRatio
@@ -283,7 +283,7 @@ default: `false`<br>
 The `lockAspectRatio` property is used to lock aspect ratio.
 
 ```html
-<Vue3DraggableResizable :lockAspectRatio="true" />
+<DragResize :lockAspectRatio="true" />
 ```
 
 #### disabledX
@@ -294,7 +294,7 @@ default: `false`<br>
 Defines the component can be moved on x-axis or not
 
 ```html
-<Vue3DraggableResizable :disabledX="true" />
+<DragResize :disabledX="true" />
 ```
 
 #### disabledY
@@ -305,7 +305,7 @@ default: `false`<br>
 Defines the component can be moved on y-axis or not
 
 ```html
-<Vue3DraggableResizable :disabledY="true" />
+<DragResize :disabledY="true" />
 ```
 
 #### disabledW
@@ -316,7 +316,7 @@ default: `false`<br>
 Defines the component`s width can be modify or not
 
 ```html
-<Vue3DraggableResizable :disabledW="true" />
+<DragResize :disabledW="true" />
 ```
 
 #### disabledH
@@ -327,7 +327,7 @@ default: `false`<br>
 Defines the component`s height can be modify or not
 
 ```html
-<Vue3DraggableResizable :disabledH="true" />
+<DragResize :disabledH="true" />
 ```
 
 #### parent
@@ -338,7 +338,7 @@ default: `false`<br>
 Restrict movement and size within its parent node
 
 ```html
-<Vue3DraggableResizable :parent="true" />
+<DragResize :parent="true" />
 ```
 
 #### handles
@@ -358,7 +358,7 @@ Define the array of handles to restrict the element resizing
 - `br` : Bottom right
 
 ```html
-<Vue3DraggableResizable :handles="['tl','tr','bl','br']" />
+<DragResize :handles="['tl','tr','bl','br']" />
 ```
 
 #### classNameDraggable
@@ -369,7 +369,7 @@ default: `draggable`
 Used to set the custom `class` of a draggable-resizable component when `draggable` is enable.
 
 ```html
-<Vue3DraggableResizable classNameDraggable="draggable" />
+<DragResize classNameDraggable="draggable" />
 ```
 
 #### classNameResizable
@@ -380,7 +380,7 @@ default: `resizable`
 Used to set the custom `class` of a draggable-resizable component when `resizable` is enable.
 
 ```html
-<Vue3DraggableResizable classNameResizable="resizable" />
+<DragResize classNameResizable="resizable" />
 ```
 
 #### classNameDragging
@@ -391,7 +391,7 @@ default: `dragging`
 Used to set the custom `class` of a draggable-resizable component when is dragging.
 
 ```html
-<Vue3DraggableResizable classNameDragging="dragging" />
+<DragResize classNameDragging="dragging" />
 ```
 
 #### classNameResizing
@@ -402,7 +402,7 @@ default: `resizing`
 Used to set the custom `class` of a draggable-resizable component when is resizing.
 
 ```html
-<Vue3DraggableResizable classNameResizing="resizing" />
+<DragResize classNameResizing="resizing" />
 ```
 
 #### classNameActive
@@ -413,7 +413,7 @@ default: `active`
 Used to set the custom `class` of a draggable-resizable component when is active.
 
 ```html
-<Vue3DraggableResizable classNameActive="active" />
+<DragResize classNameActive="active" />
 ```
 
 #### classNameHandle
@@ -424,7 +424,7 @@ default: `handle`
 Used to set the custom common `class` of each handle element.
 
 ```html
-<Vue3DraggableResizable classNameHandle="my-handle" />
+<DragResize classNameHandle="my-handle" />
 ```
 
 following handle nodes will be rendered
@@ -445,7 +445,7 @@ following handle nodes will be rendered
 payload: `-`
 
 ```html
-<Vue3DraggableResizable @activated="activatedHandle" />
+<DragResize @activated="activatedHandle" />
 ```
 
 #### deactivated
@@ -453,7 +453,7 @@ payload: `-`
 payload: `-`
 
 ```html
-<Vue3DraggableResizable @deactivated="deactivatedHandle" />
+<DragResize @deactivated="deactivatedHandle" />
 ```
 
 #### drag-start
@@ -461,7 +461,7 @@ payload: `-`
 payload: `{ x: number, y: number }`
 
 ```html
-<Vue3DraggableResizable @drag-start="dragStartHandle" />
+<DragResize @drag-start="dragStartHandle" />
 ```
 
 #### dragging
@@ -469,7 +469,7 @@ payload: `{ x: number, y: number }`
 payload: `{ x: number, y: number }`
 
 ```html
-<Vue3DraggableResizable @dragging="dragStartHandle" />
+<DragResize @dragging="dragStartHandle" />
 ```
 
 #### drag-end
@@ -477,7 +477,7 @@ payload: `{ x: number, y: number }`
 payload: `{ x: number, y: number }`
 
 ```html
-<Vue3DraggableResizable @drag-end="dragEndHandle" />
+<DragResize @drag-end="dragEndHandle" />
 ```
 
 #### resize-start
@@ -485,7 +485,7 @@ payload: `{ x: number, y: number }`
 payload: `{ x: number, y: number, w: number, h: number }`
 
 ```html
-<Vue3DraggableResizable @resize-start="resizeStartHandle" />
+<DragResize @resize-start="resizeStartHandle" />
 ```
 
 #### resizing
@@ -493,7 +493,7 @@ payload: `{ x: number, y: number, w: number, h: number }`
 payload: `{ x: number, y: number, w: number, h: number }v`
 
 ```html
-<Vue3DraggableResizable @resizing="resizingHandle" />
+<DragResize @resizing="resizingHandle" />
 ```
 
 #### resize-end
@@ -501,7 +501,7 @@ payload: `{ x: number, y: number, w: number, h: number }v`
 payload: `{ x: number, y: number, w: number, h: number }`
 
 ```html
-<Vue3DraggableResizable @resize-end="resizeEndHandle" />
+<DragResize @resize-end="resizeEndHandle" />
 ```
 
 ### Use-adsorption-alignment
@@ -514,28 +514,28 @@ This can be used as follows.
 <template>
   <div id="app">
     <div class="parent">
-      <DraggableContainer>
-        <Vue3DraggableResizable>
+      <DragResizeContainer>
+        <DragResize>
           Test
-        </Vue3DraggableResizable>
-        <Vue3DraggableResizable>
+        </DragResize>
+        <DragResize>
           Another test
-        </Vue3DraggableResizable>
-      </DraggableContainer>
+        </DragResize>
+      </DragResizeContainer>
     </div>
   </div>
 </template>
 
 <script>
 import { defineComponent } from 'vue'
-import Vue3DraggableResizable from 'vue3-draggable-resizable'
+import DragResize from '@fuyoo/dragresize'
 // This component is not exported by default
-// If you used "app.use(Vue3DraggableResizable)"，then you don't need to import it, you can use it directly.
-import { DraggableContainer } from 'vue3-draggable-resizable'
+// If you used "app.use(DragResize)"，then you don't need to import it, you can use it directly.
+import { DragResizeContainer } from '@fuyoo/dragresize'
 //default styles
-import 'vue3-draggable-resizable/dist/Vue3DraggableResizable.css'
+import '@fuyoo/dragresize/dist/DragResize.css'
 export default defineComponent({
-  components: { Vue3DraggableResizable, DraggableContainer }
+  components: { DragResize, DragResizeContainer }
 })
 </script>
 <style>
@@ -551,9 +551,9 @@ export default defineComponent({
 </style>
 ```
 
-### DraggableContainer Props
+### DragResizeContainer Props
 
-These props apply to DraggableContainer
+These props apply to DragResizeContainer
 
 #### disabled
 
@@ -563,14 +563,14 @@ default: `false`<br>
 Disable this feature
 
 ```html
-<DraggableContainer :disabled="true">
-  <Vue3DraggableResizable>
+<DragResizeContainer :disabled="true">
+  <DragResize>
     Test
-  </Vue3DraggableResizable>
-  <Vue3DraggableResizable>
+  </DragResize>
+  <DragResize>
     Another test
-  </Vue3DraggableResizable>
-</DraggableContainer>
+  </DragResize>
+</DragResizeContainer>
 ```
 
 #### adsorbParent
@@ -581,14 +581,14 @@ default: `true`<br>
 Adsorption near parent component
 
 ```html
-<DraggableContainer :adsorbParent="false">
-  <Vue3DraggableResizable>
+<DragResizeContainer :adsorbParent="false">
+  <DragResize>
     Test
-  </Vue3DraggableResizable>
-  <Vue3DraggableResizable>
+  </DragResize>
+  <DragResize>
     Another test
-  </Vue3DraggableResizable>
-</DraggableContainer>
+  </DragResize>
+</DragResizeContainer>
 ```
 
 #### adsorbCols
@@ -599,14 +599,14 @@ default: `null`<br>
 Custom guides(column)
 
 ```html
-<DraggableContainer :adsorbCols="[10,20,30]">
-  <Vue3DraggableResizable>
+<DragResizeContainer :adsorbCols="[10,20,30]">
+  <DragResize>
     Test
-  </Vue3DraggableResizable>
-  <Vue3DraggableResizable>
+  </DragResize>
+  <DragResize>
     Another test
-  </Vue3DraggableResizable>
-</DraggableContainer>
+  </DragResize>
+</DragResizeContainer>
 ```
 
 #### adsorbRows
@@ -617,14 +617,14 @@ default: `null`<br>
 Custom guides(row)
 
 ```html
-<DraggableContainer :adsorbRows="[10,20,30]">
-  <Vue3DraggableResizable>
+<DragResizeContainer :adsorbRows="[10,20,30]">
+  <DragResize>
     Test
-  </Vue3DraggableResizable>
-  <Vue3DraggableResizable>
+  </DragResize>
+  <DragResize>
     Another test
-  </Vue3DraggableResizable>
-</DraggableContainer>
+  </DragResize>
+</DragResizeContainer>
 ```
 
 #### referenceLineVisible
@@ -635,14 +635,14 @@ default: `true`<br>
 reference line visible
 
 ```html
-<DraggableContainer :referenceLineVisible="false">
-  <Vue3DraggableResizable>
+<DragResizeContainer :referenceLineVisible="false">
+  <DragResize>
     Test
-  </Vue3DraggableResizable>
-  <Vue3DraggableResizable>
+  </DragResize>
+  <DragResize>
     Another test
-  </Vue3DraggableResizable>
-</DraggableContainer>
+  </DragResize>
+</DragResizeContainer>
 ```
 
 #### referenceLineColor
@@ -653,12 +653,12 @@ default: `#f00`<br>
 reference line color
 
 ```html
-<DraggableContainer :referenceLineColor="#0f0">
-  <Vue3DraggableResizable>
+<DragResizeContainer :referenceLineColor="#0f0">
+  <DragResize>
     Test
-  </Vue3DraggableResizable>
-  <Vue3DraggableResizable>
+  </DragResize>
+  <DragResize>
     Another test
-  </Vue3DraggableResizable>
-</DraggableContainer>
+  </DragResize>
+</DragResizeContainer>
 ```
