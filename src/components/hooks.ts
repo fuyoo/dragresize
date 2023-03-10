@@ -206,9 +206,11 @@ export function initLimitSizeAndMethods(
       if (props.disabledY) {
         return top.value;
       }
+      const {parentHeight} = getParentSize(parentRef);
+      const maxTop = props.parent ? parentHeight.value - height.value : Infinity;
       return setTop(
         Math.min(
-          limitProps.maxTop.value,
+          maxTop,
           Math.max(limitProps.minTop.value, val)
         )
       );
@@ -217,9 +219,12 @@ export function initLimitSizeAndMethods(
       if (props.disabledX) {
         return left.value;
       }
+      const {parentWidth} = getParentSize(parentRef);
+      const maxLeft = props.parent ? parentWidth.value - width.value : Infinity;
       return setLeft(
         Math.min(
-          limitProps.maxLeft.value,
+          // limitProps.maxLeft.value,
+          maxLeft,
           Math.max(limitProps.minLeft.value, val)
         )
       );
