@@ -421,7 +421,6 @@ export function initResizeHandle(
     setResizingMinHeight
   } = containerProps;
   const {parentWidth, parentHeight} = initParent(parentRef);
-  console.log(parentWidth.value,parentHeight.value)
   let lstW = 0;
   let lstH = 0;
   let lstX = 0;
@@ -521,7 +520,6 @@ export function initResizeHandle(
     setResizingMinWidth(minWidth);
     setResizingMinHeight(minHeight);
     let el = window.getComputedStyle(parentRef?.value!.parentElement!);
-    console.log( parseFloat(el.getPropertyValue("width")))
     if (props.parent) {
       parentWidth.value = parseFloat(el.getPropertyValue("width"))
       parentHeight.value = parseFloat(el.getPropertyValue("height"))
@@ -538,9 +536,6 @@ export function initResizeHandle(
           maxHeight = maxWidth * aspectRatio.value;
         }
       }
-      console.log("parent:",parentWidth.value,parentHeight.value)
-      console.log(left.value,maxWidth)
-      console.log(top.value,maxHeight)
       setResizingMaxHeight(maxHeight);
       setResizingMaxWidth(maxWidth);
     }
