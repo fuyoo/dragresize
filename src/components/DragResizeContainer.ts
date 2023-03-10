@@ -10,7 +10,7 @@ import {
 import { IDENTITY } from './utils'
 
 export default defineComponent({
-  name: 'DraggableContainer',
+  name: 'DragResizeContainer',
   props: {
     disabled: {
       type: Boolean,

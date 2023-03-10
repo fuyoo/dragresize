@@ -16,7 +16,7 @@
     <p>scale {{ scale }} <button @click="scale += 0.1">+</button>  <button @click="scale -= 0.1">-</button></p>
     <div class="parent"
          :style="`transform: scale(${scale},${scale});transform-origin:left top`">
-      <Vue3DraggableResizable
+      <DragResize
         :initW="180"
         :initH="180"
         :scale="scale"
@@ -34,7 +34,7 @@
         :disabledY="false"
         classNameHandle="my-handle"
       >
-        <Vue3DraggableResizable
+        <DragResize
           :initW="40"
           :initH="80"
           :scale="scale"
@@ -53,20 +53,20 @@
           classNameHandle="my-handle2"
         >
       66666
-        </Vue3DraggableResizable>
+        </DragResize>
         6666
-      </Vue3DraggableResizable>
+      </DragResize>
     </div>
   </div>
 </template>
 
 <script>
 import { defineComponent } from "vue";
-import Vue3DraggableResizable from "./components/DragResize";
-import DraggableContainer from "./components/DragResizeContainer";
+import DragResize from "./components/DragResize";
+import DragResizeContainer from "./components/DragResizeContainer";
 
 export default defineComponent({
-  components: { DraggableContainer, Vue3DraggableResizable },
+  components: { DragResize, DragResizeContainer },
   data() {
     return {
      s1:{
