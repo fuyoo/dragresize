@@ -7,7 +7,7 @@
     "dev": "vue-cli-service serve",
     "build": "npm run build:lib && npm run build:dts",
     "lint": "vue-cli-service lint",
-    "build:lib": "vue-cli-service build --target lib --name Dres src/index.ts",
+    "build:lib": "vue-cli-service build --target lib --name DragResize src/index.ts",
     "build:dts": "tsc src/index.ts --declaration --declarationDir typings"
   },
   "devDependencies": {
@@ -53,7 +53,8 @@
   ],
   "files": [
     "dist",
-    "typings"
+    "typings",
+    "src"
   ],
   "main": "dist/index.js",
   "module": "dist/index.js",
