@@ -12,7 +12,7 @@
     <div>
       h: {{ s1.h }}<button @click="h += 10">+</button><button @click="h -= 10">-</button>
     </div>
-    <div>active:{{ s1.active }}<br /></div>
+    <div @click.stop="()=>s1.active = !s1.active">active:{{ s1.active }}<br /> </div>
     <p>scale {{ scale }} <button @click="scale += 0.1">+</button>  <button @click="scale -= 0.1">-</button></p>
     <div class="parent"
          :style="`transform: scale(${scale},${scale});transform-origin:left top`">
@@ -33,6 +33,7 @@
         :disabledH="false"
         :disabledY="false"
         classNameHandle="my-handle"
+        @click ="()=> s2.active = false"
       >
         <DragResize
           :initW="40"
@@ -51,6 +52,7 @@
           :disabledH="false"
           :disabledY="false"
           classNameHandle="my-handle2"
+          @click.stop="(evt)=> s1.active = false"
         >
       66666
         </DragResize>
@@ -94,7 +96,7 @@ export default defineComponent({
   mounted() {},
   methods: {
     print(val, e) {
-      // console.log(val, e)
+      console.log(val, e)
     },
   },
 });

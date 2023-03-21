@@ -61,13 +61,18 @@ export function initState(props: any, emit: any) {
   watch(left, (newVal) => {
     emit("update:x", newVal);
   });
-  watch(enable, (newVal, oldVal) => {
-    emit("update:active", newVal);
-    if (!oldVal && newVal) {
-      emit("activated");
-    } else if (oldVal && !newVal) {
-      emit("deactivated");
-    }
+  // 数据防抖
+  let timer:any = -1;
+  watch(() => enable.value, (newVal, oldVal) => {
+    clearTimeout(timer);
+    timer = setTimeout(() => {
+      emit("update:active", newVal);
+      if (newVal && !oldVal) {
+        emit("activated");
+      } else if (!newVal && oldVal) {
+        emit("deactivated");
+      }
+    }, 200);
   });
   watch(
     () => props.active,
@@ -123,6 +128,13 @@ export function initParent(containerRef: Ref<HTMLElement | undefined>) {
   };
 }
 
+/**
+ * 初始化尺寸和方法
+ * @param props
+ * @param parentSize
+ * @param containerProps
+ * @param parentRef
+ */
 export function initLimitSizeAndMethods(
   props: any,
   parentSize: ReturnType<typeof initParent>,
@@ -159,7 +171,7 @@ export function initLimitSizeAndMethods(
     maxHeight: computed(() => {
       let max = Infinity;
       if (props.parent) {
-        const { parentHeight} = getParentSize(parentRef);
+        const {parentHeight} = getParentSize(parentRef);
         max = Math.min(parentHeight.value, resizingMaxHeight.value);
       }
       return max;
@@ -240,6 +252,10 @@ const DOWN_HANDLES: (keyof HTMLElementEventMap)[] = ["mousedown", "touchstart"];
 const UP_HANDLES: (keyof HTMLElementEventMap)[] = ["mouseup", "touchend"];
 const MOVE_HANDLES: (keyof HTMLElementEventMap)[] = ["mousemove", "touchmove"];
 
+/**
+ * 获取位置
+ * @param e
+ */
 function getPosition(e: HandleEvent) {
   if ("touches" in e) {
     return [e.touches[0].pageX, e.touches[0].pageY];
@@ -248,6 +264,17 @@ function getPosition(e: HandleEvent) {
   }
 }
 
+/**
+ * 初始化可拖动容器
+ * @param containerRef
+ * @param containerProps
+ * @param limitProps
+ * @param draggable
+ * @param emit
+ * @param containerProvider
+ * @param parentSize
+ * @param scale
+ */
 export function initDraggableContainer(
   containerRef: Ref<HTMLElement | undefined>,
   containerProps: ReturnType<typeof initState>,
@@ -272,16 +299,23 @@ export function initDraggableContainer(
   let lstPageY = 0;
   let referenceLineMap: ReferenceLineMap | null = null;
   const documentElement = document.documentElement;
+  /**
+   * 取消聚焦
+   * @param e
+   */
   const _unselect = (e: HandleEvent) => {
     e.stopPropagation();
     const target = e.target;
-    if (!containerRef.value?.contains(<Node>target)) {
-      setEnable(false);
-      setDragging(false);
-      setResizing(false);
-      setResizingHandle("");
-    }
+    //if (!containerRef.value?.contains(<Node>target)) {
+    setEnable(false);
+    setDragging(false);
+    setResizing(false);
+    setResizingHandle("");
+    // }
   };
+  /**
+   * 鼠标放开事件
+   */
   const handleUp = () => {
     setDragging(false);
     // document.documentElement.removeEventListener('mouseup', handleUp)
@@ -299,6 +333,10 @@ export function initDraggableContainer(
       containerProvider.setMatchedLine(null);
     }
   };
+  /**
+   * 鼠标移动事件
+   * @param e
+   */
   const handleDrag = (e: MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
@@ -360,6 +398,10 @@ export function initDraggableContainer(
     }
     emit("dragging", {x: setLeft(newLeft), y: setTop(newTop)});
   };
+  /**
+   * 鼠标放下事件
+   * @param e
+   */
   const handleDown = (e: HandleEvent) => {
     e.stopPropagation();
     if (!draggable.value) return;
@@ -376,6 +418,10 @@ export function initDraggableContainer(
       referenceLineMap = getReferenceLineMap(containerProvider, containerRef, id);
     }
   };
+
+  /**
+   * 监听是否开始移动
+   */
   watch(dragging, (cur, pre) => {
     if (!pre && cur) {
       emit("drag-start", {x: x.value, y: y.value});
@@ -391,14 +437,13 @@ export function initDraggableContainer(
     if (!el) return;
     el.style.left = x + "px";
     el.style.top = y + "px";
+    // 取消聚焦
     addEvent(documentElement, DOWN_HANDLES, _unselect);
+    // 监听移动
     addEvent(el, DOWN_HANDLES, handleDown);
   });
   onUnmounted(() => {
     if (!containerRef.value) return;
-    // document.documentElement.removeEventListener('mousedown', _unselect)
-    // document.documentElement.removeEventListener('mouseup', handleUp)
-    // document.documentElement.removeEventListener('mousemove', handleDrag)
     removeEvent(documentElement, DOWN_HANDLES, _unselect);
     removeEvent(documentElement, UP_HANDLES, handleUp);
     removeEvent(documentElement, MOVE_HANDLES, handleDrag);
@@ -413,7 +458,7 @@ export function initResizeHandle(
   props: any,
   emit: any,
   scale: Ref<number>,
-  parentRef:Ref<HTMLElement | undefined>
+  parentRef: Ref<HTMLElement | undefined>
 ) {
   const {setWidth, setHeight, setLeft, setTop} = limitProps;
   const {width, height, left, top, aspectRatio} = containerProps;
@@ -526,8 +571,8 @@ export function initResizeHandle(
     setResizingMinHeight(minHeight);
     let el = window.getComputedStyle(parentRef?.value!.parentElement!);
     if (props.parent) {
-      parentWidth.value = parseFloat(el.getPropertyValue("width"))
-      parentHeight.value = parseFloat(el.getPropertyValue("height"))
+      parentWidth.value = parseFloat(el.getPropertyValue("width"));
+      parentHeight.value = parseFloat(el.getPropertyValue("height"));
 
       let maxHeight =
         idx0 === "t" ? top.value + height.value : parentHeight.value - top.value;
