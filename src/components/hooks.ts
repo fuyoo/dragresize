@@ -338,7 +338,6 @@ export function initDraggableContainer(
    * @param e
    */
   const handleDrag = (e: MouseEvent) => {
-    e.preventDefault();
     e.stopPropagation();
     if (!(dragging.value && containerRef.value)) return;
     const [pageX, pageY] = getPosition(e);
@@ -482,7 +481,6 @@ export function initResizeHandle(
   let idx1 = "";
   const documentElement = document.documentElement;
   const resizeHandleDrag = (e: HandleEvent) => {
-    e.preventDefault();
     e.stopPropagation();
     let [_pageX, _pageY] = getPosition(e);
     let deltaX = _pageX - lstPageX;
