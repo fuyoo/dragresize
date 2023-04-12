@@ -1,6 +1,6 @@
 {
   "name": "@fuyoo/dragresize",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "private": false,
   "description": "[Vue3 Component] 拖拽缩放并具有自动吸附对齐、参考线等功能",
   "scripts": {
